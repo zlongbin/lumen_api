@@ -14,3 +14,11 @@
 $router->get('/', function () use ($router) {
     return $router->app->version();
 });
+$router->post('/user/login',[
+    'as' => '',
+    'uses' => 'UserController@login'
+]);
+$router->post('/openssl/decrypt',[
+    'as' => '',
+    'uses' => 'UserController@openssl_decrypt'
+]);
