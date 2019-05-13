@@ -42,7 +42,7 @@ function Asym_private_encrypt($data,$keyfeil="private_key.pem"){
 function Asym_public_encrypt($data,$keyfeil){
     $json_data = json_encode($data);
     $public_key = openssl_get_publickey("file:///".storage_path('app/keys/'.$keyfeil));
-    openssl_private_encrypt($json_data,$enc_json,$public_key);
+    openssl_public_encrypt($json_data,$enc_json,$public_key);
     $b64 = base64_encode($enc_json);
     return $b64;
 }
@@ -53,7 +53,7 @@ function Asym_public_encrypt($data,$keyfeil){
 function Asym_private_decrypt($b64,$keyfeil="private_key.pem"){
     $enc_json = base64_decode($b64);
     $private_key = openssl_get_privatekey("file:///".storage_path('app/keys/'.$keyfeil));
-    openssl_public_decrypt($enc_json,$dec_json,$private_key);
+    openssl_private_decrypt($enc_json,$dec_json,$private_key);
     $data = json_decode($dec_json);
     return $data;
 }
@@ -82,7 +82,7 @@ function generate_sign($data,$keyfeil="private_key.pem"){
  */
 function verify_sign($data,$signature,$keyfeil){
     // 获取私钥
-    $private_key = openssl_get_privatekey("file:///".storage_path('app/keys/'.$keyfeil));
+    $public_key = openssl_get_publickey("file:///".storage_path('app/keys/'.$keyfeil));
     // 验证签名     $signature为openssl_sign生成的签名
     $verify = openssl_verify($data,$signature,$public_key);
     // 如果签名正确返回 1, 签名错误返回 0, 内部发生错误则返回-1
@@ -108,6 +108,23 @@ function curl($url,$data){
 
     curl_close($ch);
     return $info;
+}
+/**
+ * 获取token
+ */
+function getLoginToken($uid){
+    // $key = "login_token:uid:".$uid;
+    // $token = Redis::get($key);
+    // if($token){
+    //     return $token;
+    // }else{
+    //     $login_token = substr(sha1(time().$uid.Str::random(10)),5,16);
+    //     Redis::set($key,$login_token);
+    //     Redis::expire($key,604800);
+    //     return $login_token;
+    // }
+    $login_token = substr(sha1(time().$uid.str_random(10)),5,16);
+    return $login_token;
 }
 /**
  * 凯撒加密     加密
