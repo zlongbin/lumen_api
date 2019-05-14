@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-header('Access-Control-Allow-Origin:*');
+// header('Access-Control-Allow-Origin:*');
 // header('Access-Control-Allow-Methods:*');
 // header('Access-Control-Allow-Headers:*');
 // header("Access-Control-Request-Headers:*");
@@ -248,7 +248,8 @@ class UserController extends Controller
                 'msg'   => '注册失败'
             ];
         }
-        die(json_encode($response,JSON_UNESCAPED_UNICODE));
+        // die(json_encode($response,JSON_UNESCAPED_UNICODE));
+        return 1;
     }
     public function ajaxlogin(){
 
