@@ -14,7 +14,7 @@
 $router->get('/', function () use ($router) {
     return $router->app->version();
 });
-$router->options('/user/reg',[
+$router->get('/user/reg',[
     'as' => '注册',
     'uses' => 'UserController@reg'
 ]);
