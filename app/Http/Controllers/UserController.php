@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-// header('Access-Control-Allow-Origin:http://client.com');
+header('Access-Control-Allow-Origin:http://127.0.0.1:8848/mui/reg.html');
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Crypt;
 use Illuminate\Contracts\Encryption\DecryptException;
@@ -27,6 +27,7 @@ class UserController extends Controller
     public function reg(Request $request){
         // 接收数据
         $post_data = json_decode(file_get_contents("php://input"));
+        var_dump($post_data);die;
         // 验证签名
         $sign =  $_GET['sign'];
         $verify = verify_sign($post_data,$sign,"client_public_key.pem");
