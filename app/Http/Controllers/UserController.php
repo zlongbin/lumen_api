@@ -256,7 +256,7 @@ class UserController extends Controller
         // return 1;
     }
     public function ajaxlogin(Request $request){
-        $account = $request->input('account');
+        $email = $request->input('account');
         $password = $request->input('password');
         $user_Info = UserModel::where(['email'=>$email])->first();
         if($user_Info){
