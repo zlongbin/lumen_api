@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-header('Access-Control-Allow-Origin:http://127.0.0.1:8848/mui/reg.html');
+header('Access-Control-Allow-Origin:http://127.0.0.1:8848');
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Crypt;
 use Illuminate\Contracts\Encryption\DecryptException;
