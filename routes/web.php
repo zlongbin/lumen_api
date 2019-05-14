@@ -32,5 +32,5 @@ $router->post('/ajaxreg',[
 ]);
 $router->post('/ajaxlogin',[
     'as' => '注册',
-    'uses' => 'UserController@ajax'
+    'uses' => 'UserController@ajaxlogin'
 ]);
