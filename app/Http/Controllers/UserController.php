@@ -218,9 +218,9 @@ class UserController extends Controller
         $post_data = file_get_contents("php://input");
         $json_post = json_decode($post_data);
         var_dump($json_post);
-        $account = $json_post->account;
-        $password = $json_post->password;
-        $email = $json_post->email;
+        $account = $json_post['account'];
+        $password = $json_post['password'];
+        $email = $json_post['email'];
         $user_Info = AjaxUserModel::where(['email'=>$email])->first();
         if($user_Info){
             $response = [
