@@ -216,15 +216,15 @@ class UserController extends Controller
 
     public function ajaxreg(Request $request){
         $post_data = file_get_contents("php://input");
-        echo $account = $request->input('account');
-        echo $password = $request->input('password');
-        echo $email = $request->input('email');
-        // var_dump($post);
-        $json_post = json_decode($post_data);
-        var_dump($json_post);
-        $account = $json_post['account'];
-        $password = $json_post['password'];
-        $email = $json_post['email'];
+        $account = $request->input('account');
+        $password = $request->input('password');
+        $email = $request->input('email');
+        // // var_dump($post);
+        // $json_post = json_decode($post_data);
+        // var_dump($json_post);
+        // $account = $json_post['account'];
+        // $password = $json_post['password'];
+        // $email = $json_post['email'];
         $user_Info = AjaxUserModel::where(['email'=>$email])->first();
         if($user_Info){
             $response = [
@@ -252,8 +252,8 @@ class UserController extends Controller
                 'msg'   => '注册失败'
             ];
         }
-        // die(json_encode($response,JSON_UNESCAPED_UNICODE));
-        return 1;
+        die(json_encode($response,JSON_UNESCAPED_UNICODE));
+        // return 1;
     }
     public function ajaxlogin(){
 
