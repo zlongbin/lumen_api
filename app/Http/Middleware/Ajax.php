@@ -28,7 +28,7 @@ class Ajax
             'Access-Control-Allow-Headers',
             'Content-Type, Content-Length, Authorization, Accept, X-Requested-With, Token'
         );
-        $response->header('Access-Control-Allow-Origin', 'http://127.0.0.1:8848');
+        // $response->header('Access-Control-Allow-Origin', '*');
         $response->header('Access-Control-Max-Age', 86400);
         return $response;
         return $next($request);
