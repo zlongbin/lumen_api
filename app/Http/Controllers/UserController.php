@@ -1,12 +1,13 @@
 <?php
 
 namespace App\Http\Controllers;
+// header('Access-Control-Allow-Origin:http://client.com');
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Crypt;
 use Illuminate\Contracts\Encryption\DecryptException;
 use App\Http\Model\UserModel;
 use Illuminate\Support\Facades\Cache;
-// use Illuminate\Support\Facades\Redis;
+use Illuminate\Support\Facades\Redis;
 
 class UserController extends Controller
 {
@@ -93,7 +94,7 @@ class UserController extends Controller
      */
     public function login(Request $request){
         // 接收数据
-        $post_data = file_get_contents("php://input");
+        $post_data = json_decode(file_get_contents("php://input"));
         // 验证签名
         $sign =  $_GET['sign'];
         $verify = verify_sign($post_data,$sign,"client_public_key.pem");
@@ -102,13 +103,13 @@ class UserController extends Controller
                 'error' => 50015,
                 'msg'   =>  '签名错误'
             ];
-            die(json_decode($response,JSON_UNESCAPED_UNICODE));
+            die(json_encode($response,JSON_UNESCAPED_UNICODE));
         }elseif($verify=='-1'){
             $response = [
                 'error' => 50016,
                 'msg'   =>  '内部错误'
             ];
-            die(json_decode($response,JSON_UNESCAPED_UNICODE));
+            die(json_encode($response,JSON_UNESCAPED_UNICODE));
         }
         // 解密
         $dec_data = Asym_private_decrypt($post_data);
@@ -121,6 +122,8 @@ class UserController extends Controller
                 $token = getLoginToken($user_Info['id']);
                 Cache::put($key,$token,604800);
                 // echo Cache::get($key);echo "<hr>";
+                // Redis::set($key,$token);
+                // echo Redis::get($key);
                 $response = [
                     'error' => 0,
                     'msg'   =>  'ok',
@@ -200,5 +203,9 @@ class UserController extends Controller
         $public_key = openssl_get_publickey("file:///".storage_path('app/keys/public_key.pem'));
         // 公钥解密
         openssl_public_decrypt($enc_json,$dec_json,$public_key);
+    }
+    public function ajax(){
+        echo "asdasds";
+        // return  time();
     }
 }

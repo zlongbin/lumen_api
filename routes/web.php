@@ -26,3 +26,7 @@ $router->post('/openssl/decrypt',[
     'as' => '',
     'uses' => 'UserController@openssl_decrypt'
 ]);
+$router->get('/ajax',[
+    'as' => '注册',
+    'uses' => 'UserController@ajax'
+]);
