@@ -259,6 +259,9 @@ class UserController extends Controller
         $email = $request->input('account');
         $password = $request->input('password');
         $user_Info = AjaxUserModel::where(['email'=>$email])->first();
+        var_dump($user_Info['password']);
+        var_dump($password);
+
         if($user_Info){
             if($password==$user_Info['password']){
                 $key="login_token:uid".$user_Info['id'];
