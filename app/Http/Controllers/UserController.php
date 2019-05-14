@@ -260,6 +260,7 @@ class UserController extends Controller
         $password = $request->input('password');
         var_dump($password);
         $user_Info = UserModel::where(['email'=>$email])->first();
+        var_dump($user_Info['password']);        
         if($user_Info){
             if($password==$user_Info['password']){
                 $key="login_token:uid".$user_Info['id'];
