@@ -28,7 +28,7 @@ $router->post('/openssl/decrypt',[
 ]);
 $router->post('/ajaxreg',[
     'as' => '注册',
-    'uses' => 'UserController@ajax'
+    'uses' => 'UserController@ajaxreg'
 ]);
 $router->post('/ajaxlogin',[
     'as' => '注册',
