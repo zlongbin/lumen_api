@@ -214,8 +214,10 @@ class UserController extends Controller
 
 
 
-    public function ajaxreg(){
+    public function ajaxreg(Request $request){
         $post_data = file_get_contents("php://input");
+        $post = $request->input()->all();
+        var_dump($post);
         $json_post = json_decode($post_data);
         var_dump($json_post);
         $account = $json_post['account'];
