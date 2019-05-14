@@ -212,7 +212,7 @@ class UserController extends Controller
     }
     public function ajaxreg(){
         $post_data = file_get_contents("php://input");
-        return $post_data;
+        return 1;
     }
     public function ajaxlogin(){
 
