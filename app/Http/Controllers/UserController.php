@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 header('Access-Control-Allow-Origin:*');
 header('Access-Control-Allow-Methods:GET, POST, PUT, DELETE, OPTIONS');
-header('Access-Control-Allow-Headers:content-type,token,id');
+header('Access-Control-Allow-Headers:content-type,token,id,X-Requested-With');
 header("Access-Control-Request-Headers: Origin, X-Requested-With, content-Type, Accept, Authorization");
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Crypt;
