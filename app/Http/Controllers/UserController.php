@@ -10,6 +10,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Crypt;
 use Illuminate\Contracts\Encryption\DecryptException;
 use App\Http\Model\UserModel;
+use App\Http\Model\AjaxUserModel;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Redis;
 
@@ -210,9 +211,44 @@ class UserController extends Controller
         // 公钥解密
         openssl_public_decrypt($enc_json,$dec_json,$public_key);
     }
+
+
+
     public function ajaxreg(){
         $post_data = file_get_contents("php://input");
-        return 1;
+        $json_post = json_decode($post_data);
+        var_dump($json_post);
+        $account = $json_post->account;
+        $password = $json_post->password;
+        $email = $json_post->email;
+        $user_Info = AjaxUserModel::where(['email'=>$email])->first();
+        if($user_Info){
+            $response = [
+                'error' => 50011,
+                'msg'   =>  '该邮箱已被注册'
+            ];
+            die(json_encode($response,JSON_UNESCAPED_UNICODE));
+        }
+
+        $data = [
+            'account'  =>  $account,
+            'password'  =>  $password,
+            'email'     =>  $email,
+            'add_time'  =>  time()
+        ];
+        $id = AjaxUserModel::insertGetId($data);
+        if($id){
+            $response=[
+                'error' => 0,
+                'msg'   => 'ok'
+            ];
+        }else{
+            $response=[
+                'error' => 50013,
+                'msg'   => '注册失败'
+            ];
+        }
+        die(json_encode($response,JSON_UNESCAPED_UNICODE));
     }
     public function ajaxlogin(){
 
