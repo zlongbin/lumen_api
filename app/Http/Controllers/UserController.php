@@ -258,11 +258,9 @@ class UserController extends Controller
     public function ajaxlogin(Request $request){
         $email = $request->input('account');
         $password = $request->input('password');
-        var_dump($password);
         $user_Info = UserModel::where(['email'=>$email])->first();
-        var_dump($user_Info['password']);        
         if($user_Info){
-            if($password==$user_Info['password']){
+            if(md5($password)==$user_Info['password']){
                 $key="login_token:uid".$user_Info['id'];
                 $token = getLoginToken($user_Info['id']);
                 Cache::put($key,$token,604800);
