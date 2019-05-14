@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 header('Access-Control-Allow-Origin:*');
+header('Access-Control-Allow-Methods:GET, POST, PUT, DELETE, OPTIONS');
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Crypt;
 use Illuminate\Contracts\Encryption\DecryptException;
