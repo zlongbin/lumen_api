@@ -256,6 +256,34 @@ class UserController extends Controller
         // return 1;
     }
     public function ajaxlogin(){
-
+        $account = $request->input('account');
+        $password = $request->input('password');
+        $user_Info = UserModel::where(['email'=>$email])->first();
+        if($user_Info){
+            if($password==$user_Info['password']){
+                $key="login_token:uid".$user_Info['id'];
+                $token = getLoginToken($user_Info['id']);
+                Cache::put($key,$token,604800);
+                // echo Cache::get($key);echo "<hr>";
+                // Redis::set($key,$token);
+                // echo Redis::get($key);
+                $response = [
+                    'error' => 0,
+                    'msg'   =>  'ok',
+                    'token' =>  $token
+                ];
+            }else{
+                $response = [
+                    'error' => 50010,
+                    'msg'   =>  '密码错误',
+                ];
+            }
+        }else{
+            $response = [
+                'error' => 50014,
+                'msg'   =>  '该邮箱还未注册',
+            ];
+        }
+        die(json_encode($response,JSON_UNESCAPED_UNICODE));
     }
 }
