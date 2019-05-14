@@ -16,7 +16,6 @@ $router->get('/', function () use ($router) {
 });
 $router->post('/user/reg',[
     'as' => '注册',
-    'middleware' => 'Ajax',
     'uses' => 'UserController@reg'
 ]);
 $router->post('/user/login',[
