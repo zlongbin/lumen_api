@@ -14,7 +14,7 @@
 $router->get('/', function () use ($router) {
     return $router->app->version();
 });
-$router->get('/user/reg',[
+$router->post('/user/reg',[
     'as' => '注册',
     'middleware' => 'Ajax',
     'uses' => 'UserController@reg'
@@ -27,7 +27,11 @@ $router->post('/openssl/decrypt',[
     'as' => '',
     'uses' => 'UserController@openssl_decrypt'
 ]);
-$router->get('/ajax',[
+$router->post('/ajaxreg',[
+    'as' => '注册',
+    'uses' => 'UserController@ajax'
+]);
+$router->post('/ajaxlogin',[
     'as' => '注册',
     'uses' => 'UserController@ajax'
 ]);

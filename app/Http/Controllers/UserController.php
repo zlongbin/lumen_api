@@ -209,8 +209,11 @@ class UserController extends Controller
         // 公钥解密
         openssl_public_decrypt($enc_json,$dec_json,$public_key);
     }
-    public function ajax(){
+    public function ajaxreg(){
         echo "asdasds";
         // return  time();
+    }
+    public function ajaxlogin(){
+        
     }
 }
