@@ -38,7 +38,7 @@ class UserController extends Controller
             'password' => $password,
             'email' => $email            
         ];
-        $url = "http://passport.api.com/user/passportReg";
+        $url = "http://apitest.yxxmmm.com/user/passportReg";
         return curl($url,$data);
     }
     /**
@@ -51,7 +51,7 @@ class UserController extends Controller
             'email' => $email,
             'password' => $password
         ];
-        $url = "http://passport.api.com/user/passportLogin";
+        $url = "http://apitest.yxxmmm.com/user/passportLogin";
         return curl($url,$data);
     }
 
