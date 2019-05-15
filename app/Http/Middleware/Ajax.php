@@ -20,6 +20,8 @@ class Ajax
         } else {
             $response = $next($request);
         }
+        echo "<pre>";print_r($response);echo "</pre>";echo "<hr>";
+        var_dump($response);
         if (!method_exists($response, 'header')) {
             return $response;
         }
