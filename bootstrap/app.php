@@ -61,9 +61,9 @@ $app->singleton(
 |
 */
 
-$app->middleware([
-    App\Http\Middleware\Ajax::class
-]);
+// $app->middleware([
+//     App\Http\Middleware\Ajax::class
+// ]);
 
 // $app->routeMiddleware([
 //     'auth' => App\Http\Middleware\Authenticate::class,

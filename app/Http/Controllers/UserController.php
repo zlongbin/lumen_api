@@ -42,13 +42,13 @@ class UserController extends Controller
                 'error' => 50015,
                 'msg'   =>  '签名错误'
             ];
-            die(json_decode($response,JSON_UNESCAPED_UNICODE));
+            die(json_encode($response,JSON_UNESCAPED_UNICODE));
         }elseif($verify=='-1'){
             $response = [
                 'error' => 50016,
                 'msg'   =>  '内部错误'
             ];
-            die(json_decode($response,JSON_UNESCAPED_UNICODE));
+            die(json_encode($response,JSON_UNESCAPED_UNICODE));
         }
         // var_dump($verify);die;
         // 解密
