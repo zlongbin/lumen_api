@@ -29,6 +29,35 @@ class UserController extends Controller
     /**
      * 注册
      */
+    public function passportReg(Request $request){
+        $account = $request->input('account');
+        $password = $request->input('password');
+        $email = $request->input('email');
+        $data = [
+            'account' => $account,
+            'password' => $password,
+            'email' => $email            
+        ];
+        $url = "http://passport.api.com/user/passportReg";
+        return curl($url,$data);
+    }
+    /**
+     * 登录
+     */
+    public function passportLogin(Request $request){
+        $email = $request->input('email');
+        $password = $request->input('password');
+        $data = [
+            'email' => $email,
+            'password' => $password
+        ];
+        $url = "http://passport.api.com/user/passportLogin";
+        return curl($url,$data);
+    }
+
+    /**
+     * 注册
+     */
     public function reg(Request $request){
         // 接收数据
         $post_data = json_decode(file_get_contents("php://input"));

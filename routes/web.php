@@ -14,6 +14,7 @@
 $router->get('/', function () use ($router) {
     return $router->app->version();
 });
+// 注册登录
 $router->post('/user/reg',[
     'as' => '注册',
     'uses' => 'UserController@reg'
@@ -22,10 +23,13 @@ $router->post('/user/login',[
     'as' => '登录',
     'uses' => 'UserController@login'
 ]);
+// 测试
 $router->post('/openssl/decrypt',[
     'as' => '',
     'uses' => 'UserController@openssl_decrypt'
 ]);
+
+// ajax测试
 $router->post('/ajaxreg',[
     'as' => '注册',
     'uses' => 'UserController@ajaxreg'
@@ -33,4 +37,14 @@ $router->post('/ajaxreg',[
 $router->post('/ajaxlogin',[
     'as' => '注册',
     'uses' => 'UserController@ajaxlogin'
+]);
+
+// passport注册登录（分布）
+$router->post('/user/passportReg',[
+    'as' => '注册',
+    'uses' => 'UserController@passportReg'
+]);
+$router->post('/user/passportLogin',[
+    'as' => '登录',
+    'uses' => 'UserController@passportLogin'
 ]);
