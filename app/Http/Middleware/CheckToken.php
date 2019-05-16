@@ -23,8 +23,9 @@ class CheckToken
             ];
             return $response;
         }else{
-            $key = "login_token:uid".$_GET['uid'];
+            $key ="login_token:uid".$_GET['uid'];
             $token = Redis::get($key);
+            echo $token;
             if($token){
                 if($token != $_GET['token']){
                     $response = [
