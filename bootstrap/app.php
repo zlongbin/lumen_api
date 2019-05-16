@@ -65,9 +65,10 @@ $app->middleware([
     App\Http\Middleware\Ajax::class
 ]);
 
-// $app->routeMiddleware([
-//     'auth' => App\Http\Middleware\Authenticate::class,
-// ]);
+$app->routeMiddleware([
+    'auth' => App\Http\Middleware\Authenticate::class,
+    'CheckToken' => App\Http\Middleware\CheckToken::class,
+]);
 
 /*
 |--------------------------------------------------------------------------

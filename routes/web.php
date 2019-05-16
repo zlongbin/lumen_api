@@ -51,5 +51,6 @@ $router->post('/user/passportLogin',[
 // 个人中心
 $router->post('/home/center',[
     'as' => '注册',
+    'middleware' => 'CheckToken',
     'uses' => 'HomeController@center'
 ]);
