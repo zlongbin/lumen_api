@@ -21,7 +21,7 @@ class CheckToken
                 "error" => 50021,
                 "msg"   =>  "参数不完整"
             ];
-            die(json_encode($response,JSON_UNESCAPED_UNICODE));
+            return $response;
         }else{
             $key = "login_token:uid".$_GET['uid'];
             $token = Redis::get($key);
@@ -31,14 +31,14 @@ class CheckToken
                         "error" => 50020,
                         "msg"   =>  "token值错误"
                     ];
-                    die(json_encode($response,JSON_UNESCAPED_UNICODE));
+                    return $response;
                 }
             }else{
                 $response = [
                     "error" => 50020,
                     "msg"   =>  "token值过期"
                 ];
-                die(json_encode($response,JSON_UNESCAPED_UNICODE));
+                return $response;
             }
         }
         return $next($request);
