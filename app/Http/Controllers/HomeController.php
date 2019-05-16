@@ -1,7 +1,6 @@
 <?php
 
 namespace App\Http\Controllers;
-header('Access-Control-Allow-Origin:*');
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
