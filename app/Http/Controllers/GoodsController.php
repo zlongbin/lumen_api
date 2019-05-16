@@ -17,12 +17,20 @@ class GoodsController extends Controller
 
     public function goods(Request $request){
         $uid = $request->input('uid');
+        $data = [
+            'uid'   => $uid
+        ];
+        $url = "http://apitest.yxxmmm.com/goods/goods";
+        return curl($url,$data);
+    }
+    public function goodsDetail(Request $request){
+        $uid = $request->input('uid');
         $goods_id = $request->input('goods_id');
         $data = [
             'uid'   => $uid,
             'goods_id' => $goods_id
         ];
-        $url = "http://passport.api.com/goods/goodsDetail";
+        $url = "http://apitest.yxxmmm.com/goods/goodsDetail";
         return curl($url,$data);
     }
 }
