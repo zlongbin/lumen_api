@@ -23,24 +23,24 @@ class CheckToken
             ];
             return $response;
         }else{
-            $key ="laravel_database_login_token:uid".$_GET['uid'];
-            $token = Redis::get($key);
-            // echo $token;echo "<hr>";
-            if($token){
-                if($token != $_GET['token']){
-                    $response = [
-                        "error" => 50020,
-                        "msg"   =>  "token值错误"
-                    ];
-                    return $response;
-                }
-            }else{
-                $response = [
-                    "error" => 50020,
-                    "msg"   =>  "token值过期"
-                ];
-                return $response;
-            }
+            // $key ="laravel_database_login_token:uid".$_GET['uid'];
+            // $token = Redis::get($key);
+            // // echo $token;echo "<hr>";
+            // if($token){
+            //     if($token != $_GET['token']){
+            //         $response = [
+            //             "error" => 50021,
+            //             "msg"   =>  "token值错误"
+            //         ];
+            //         return $response;
+            //     }
+            // }else{
+            //     $response = [
+            //         "error" => 50020,
+            //         "msg"   =>  "token值过期"
+            //     ];
+            //     return $response;
+            // }
         }
         return $next($request);
     }

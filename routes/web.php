@@ -54,3 +54,26 @@ $router->post('/home/center',[
     'middleware' => 'CheckToken',
     'uses' => 'HomeController@center'
 ]);
+// 商品
+$router->post('/goods/goods',[
+    'as' => '注册',
+    'middleware' => 'CheckToken',
+    'uses' => 'GoodsController@goods'
+]);
+$router->post('/goods/goodsDetail',[
+    'as' => '注册',
+    'middleware' => 'CheckToken',
+    'uses' => 'GoodsController@goodsDetail'
+]);
+// 购物车
+$router->post('/cart/cart',[
+    'as' => '注册',
+    'middleware' => 'CheckToken',
+    'uses' => 'CartController@cart'
+]);
+// 订单
+$router->post('/order/order',[
+    'as' => '注册',
+    'middleware' => 'CheckToken',
+    'uses' => 'OrderController@order'
+]);
