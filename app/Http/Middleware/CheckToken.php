@@ -23,9 +23,9 @@ class CheckToken
             ];
             return $response;
         }else{
-            $key ="login_token:uid".$_GET['uid'];
+            $key ="laravel_database_login_token:uid".$_GET['uid'];
             $token = Redis::get($key);
-            echo $token;
+            // echo $token;echo "<hr>";
             if($token){
                 if($token != $_GET['token']){
                     $response = [
