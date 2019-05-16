@@ -17,7 +17,7 @@ class CheckToken
     public function handle($request, Closure $next)
     {
         if(!isset($_GET['uid']) || !isset($_GET['token'])){
-            $reponse = [
+            $response = [
                 "error" => 50021,
                 "msg"   =>  "参数不完整"
             ];
@@ -27,14 +27,14 @@ class CheckToken
             $token = Redis::get($key);
             if($token){
                 if($token != $_GET['token']){
-                    $reponse = [
+                    $response = [
                         "error" => 50020,
                         "msg"   =>  "token值错误"
                     ];
                     die(json_encode($response,JSON_UNESCAPED_UNICODE));
                 }
             }else{
-                $reponse = [
+                $response = [
                     "error" => 50020,
                     "msg"   =>  "token值过期"
                 ];
