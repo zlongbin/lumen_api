@@ -48,3 +48,8 @@ $router->post('/user/passportLogin',[
     'as' => '登录',
     'uses' => 'UserController@passportLogin'
 ]);
+// 个人中心
+$router->post('/home/center',[
+    'as' => '注册',
+    'uses' => 'HomeController@center'
+]);
