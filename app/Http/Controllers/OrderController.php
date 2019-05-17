@@ -22,7 +22,7 @@ class OrderController extends Controller
             'uid'   => $uid,
             'token' => $token
         ];
-        $url = "http://passport.api.com/order/order";
+        $url = "http://apitest.yxxmmm.com/order/order";
         return curl($url,$data);
     }
 }

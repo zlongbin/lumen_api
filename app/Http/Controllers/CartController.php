@@ -24,7 +24,7 @@ class CartController extends Controller
             'goods_id' => $goods_id,
             'num'   =>  $num
         ];
-        $url = "http://passport.api.com/cart/cart";
+        $url = "http://apitest.yxxmmm.com/cart/cart";
         return curl($url,$data);
     }
 }
