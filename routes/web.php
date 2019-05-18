@@ -71,6 +71,11 @@ $router->post('/cart/cart',[
     'middleware' => 'CheckToken',
     'uses' => 'CartController@cart'
 ]);
+$router->post('/cart/cartList',[
+    'as' => '注册',
+    'middleware' => 'CheckToken',
+    'uses' => 'CartController@cartList'
+]);
 // 订单
 $router->post('/order/order',[
     'as' => '注册',
