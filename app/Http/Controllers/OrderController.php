@@ -22,7 +22,7 @@ class OrderController extends Controller
             'uid'   => $uid,
             'token' => $token
         ];
-        $url = "http://apitest.yxxmmm.com/order/order";
+        $url = env('API_PASSPORT')."/order/order";
         return curl($url,$data);
     }
 }

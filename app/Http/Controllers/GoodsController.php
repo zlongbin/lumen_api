@@ -20,7 +20,7 @@ class GoodsController extends Controller
         $data = [
             'uid'   => $uid
         ];
-        $url = "http://apitest.yxxmmm.com/goods/goods";
+        $url = env('API_PASSPORT')."/goods/goods";
         return curl($url,$data);
     }
     public function goodsDetail(Request $request){
@@ -30,7 +30,7 @@ class GoodsController extends Controller
             'uid'   => $uid,
             'goods_id' => $goods_id
         ];
-        $url = "http://apitest.yxxmmm.com/goods/goodsDetail";
+        $url = env('API_PASSPORT')."/goods/goodsDetail";
         return curl($url,$data);
     }
 }

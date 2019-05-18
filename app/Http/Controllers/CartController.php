@@ -24,7 +24,19 @@ class CartController extends Controller
             'goods_id' => $goods_id,
             'num'   =>  $num
         ];
-        $url = "http://apitest.yxxmmm.com/cart/cart";
+        $url = env('API_PASSPORT')."/cart/cart";
+        return curl($url,$data);
+    }
+    public function cartList(Request $requests){
+        $uid = $request->input('uid');
+        $goods_id = $request->input('goods_id');
+        $num = $request->input('num');
+        $data = [
+            'uid'   => $uid,
+            'goods_id' => $goods_id,
+            'num'   =>  $num
+        ];
+        $url = env('API_PASSPORT')."/cart/cartList";
         return curl($url,$data);
     }
 }
