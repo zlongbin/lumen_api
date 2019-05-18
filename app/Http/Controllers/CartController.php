@@ -29,12 +29,8 @@ class CartController extends Controller
     }
     public function cartList(Request $requests){
         $uid = $request->input('uid');
-        $goods_id = $request->input('goods_id');
-        $num = $request->input('num');
         $data = [
-            'uid'   => $uid,
-            'goods_id' => $goods_id,
-            'num'   =>  $num
+            'uid'   => $uid
         ];
         $url = env('API_PASSPORT')."/cart/cartList";
         return curl($url,$data);
