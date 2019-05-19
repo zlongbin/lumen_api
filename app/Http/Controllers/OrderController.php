@@ -17,10 +17,10 @@ class OrderController extends Controller
 
     public function order(Request $request){
         $uid = $request->input('uid');
-        $token = $request->input('token');
+        $goods_id = $request->input('goods_id');
         $data = [
             'uid'   => $uid,
-            'token' => $token
+            'goods_id'=>$goods_id
         ];
         $url = env('API_PASSPORT')."/order/order";
         return curl($url,$data);
