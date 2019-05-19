@@ -82,3 +82,9 @@ $router->post('/order/order',[
     'middleware' => 'CheckToken',
     'uses' => 'OrderController@order'
 ]);
+
+$router->post('/pay/pay',[
+    'as' => '注册',
+    'middleware' => 'CheckToken',
+    'uses' => 'PayController@pay'
+]);
